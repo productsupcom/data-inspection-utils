@@ -1,0 +1,9 @@
+productsup.data_inspection_utils.swagger:
+    path: /api.json
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger }
+
+productsup.data_inspection_utils.swagger_ui:
+    path: /api
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }

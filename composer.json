@@ -1,0 +1,78 @@
+{
+  "name": "productsupcom/data-inspection-utils",
+  "require": {
+    "php": ">=8.1",
+    "doctrine/doctrine-bundle": "^2.7",
+    "friendsofsymfony/rest-bundle": "^3.4",
+    "nelmio/api-doc-bundle": "^4.10",
+    "phpdocumentor/reflection-docblock": "^5.3",
+    "phpstan/phpdoc-parser": "^1.15",
+    "sensio/framework-extra-bundle": "^6.2",
+    "symfony/asset": "6.2.*",
+    "symfony/console": "6.2.*",
+    "symfony/dotenv": "6.2.*",
+    "symfony/flex": "2.2.*",
+    "symfony/framework-bundle": "6.2.*",
+    "symfony/monolog-bundle": "3.x-dev",
+    "symfony/property-access": "6.2.*",
+    "symfony/property-info": "6.2.*",
+    "symfony/runtime": "6.2.*",
+    "symfony/serializer": "6.2.*",
+    "symfony/twig-bundle": "6.2.*",
+    "symfony/validator": "6.2.*",
+    "symfony/yaml": "6.2.*",
+    "twig/twig": "^2.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "3.11.0",
+    "phpstan/phpstan": "1.9.x-dev",
+    "phpstan/phpstan-deprecation-rules": "1.1.x-dev",
+    "phpstan/phpstan-phpunit": "1.1.x-dev",
+    "phpstan/phpstan-symfony": "1.2.x-dev",
+    "phpunit/phpunit": "^9",
+    "symfony/phpunit-bridge": "6.2.x-dev"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "allow-plugins": {
+      "symfony/flex": true,
+      "symfony/runtime": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Productsup\\DataInspectionUtils\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Productsup\\DataInspectionUtils\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    },
+    "post-install-cmd": [
+      "@auto-scripts"
+    ],
+    "post-update-cmd": [
+      "@auto-scripts"
+    ],
+    "cs-fix": "./bin/php-cs-fix",
+    "cs-check": "./bin/php-cs-check",
+    "phpstan-analyse": "./bin/phpstan-analyse",
+    "phpunit": "./bin/phpunit"
+  },
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false,
+      "require": "6.2.*"
+    }
+  }
+}

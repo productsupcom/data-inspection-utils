@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  php-fpm-8.1:
+    build:
+      context: docker/php-fpm/
+    container_name: data-inspection-utils-php-fpm-8.1
+    volumes:
+      - ${HOME}/.composer/:/root/.composer
+      - ./:/usr/share/productsup/data-inspection-utils
+    stdin_open: true
+    working_dir: /usr/share/productsup/data-inspection-utils
+    environment:
+      PATH: "${PATH}:/usr/local/productsup-bin/bin"
+    networks:
+      - inspector-utils-network
+  web:
+    build:
+      context: docker/web/
+    container_name: data-inspection-utils-nginx
+    restart: on-failure
+    ports:
+      - ${WEB_API_PORT:-8080}:80
+    volumes:
+      - ./public:/usr/share/productsup/data-inspection-utils/public
+    env_file:
+      - .env
+    depends_on:
+      - php-fpm-8.1
+    networks:
+      - inspector-utils-network
+
+networks:
+  inspector-utils-network:
+    driver: bridge

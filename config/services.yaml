@@ -1,0 +1,20 @@
+parameters:
+    productsup.data_inspection.field_usage.site_chunk_size: 1000
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    _instanceof:
+        Productsup\DataInspectionUtils\DataFetcher\DataFlow\OriginSiteFetcherInterface:
+            tags: [ 'productsup.data_inspection.site_fetcher' ]
+        Productsup\DataInspectionUtils\DataFetcher\FieldUsage\FieldUsageFetcherInterface:
+            tags: [ 'productsup.data_inspection.field_usage_fetcher' ]
+
+    Productsup\DataInspectionUtils\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
